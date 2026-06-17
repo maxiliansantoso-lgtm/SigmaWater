@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,10 +10,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="products.css">
+    <style>
+        html { scroll-behavior: smooth; }
+        .main-bottle-img { transition: opacity 0.3s ease, height 0.3s ease; }
+    </style>
 </head>
-
 <body>
-    <!-- Background Design Elements -->
     <div class="bg-gradient"></div>
     <div class="bg-shape circle-1"></div>
     <div class="bg-shape circle-2"></div>
@@ -24,38 +25,33 @@
         <header>
             <div class="logo">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M12 2.69L19.5 13.5C21.1 15.8 20.8 18.9 18.8 20.9C16.9 22.8 13.9 23.1 11.5 21.6L12 21C14.2 22.3 17 21.9 18.7 20.2C20.4 18.5 20.7 15.7 19.3 13.7L12 3.1L4.7 13.7C3.3 15.7 3.6 18.5 5.3 20.2C7 21.9 9.8 22.3 12 21L12.5 21.6C10.1 23.1 7.1 22.8 5.2 20.9C3.2 18.9 2.9 15.8 4.5 13.5L12 2.69Z"
-                        fill="#3D8994" />
-                    <path
-                        d="M12 7.5L17.5 15.5C18.6 17.1 18.4 19.2 17.1 20.5C15.8 21.8 13.7 22 12.1 20.9L12 20C13.2 21 15 20.8 16.2 19.6C17.4 18.4 17.6 16.5 16.6 15.1L12 8.4L7.4 15.1C6.4 16.5 6.6 18.4 7.8 19.6C9 20.8 10.8 21 12 20L11.9 20.9C10.3 22 8.2 21.8 6.9 20.5C5.6 19.2 5.4 17.1 6.5 15.5L12 7.5Z"
-                        fill="#3D8994" />
+                    <path d="M12 2.69L19.5 13.5C21.1 15.8 20.8 18.9 18.8 20.9C16.9 22.8 13.9 23.1 11.5 21.6L12 21C14.2 22.3 17 21.9 18.7 20.2C20.4 18.5 20.7 15.7 19.3 13.7L12 3.1L4.7 13.7C3.3 15.7 3.6 18.5 5.3 20.2C7 21.9 9.8 22.3 12 21L12.5 21.6C10.1 23.1 7.1 22.8 5.2 20.9C3.2 18.9 2.9 15.8 4.5 13.5L12 2.69Z" fill="#3D8994" />
+                    <path d="M12 7.5L17.5 15.5C18.6 17.1 18.4 19.2 17.1 20.5C15.8 21.8 13.7 22 12.1 20.9L12 20C13.2 21 15 20.8 16.2 19.6C17.4 18.4 17.6 16.5 16.6 15.1L12 8.4L7.4 15.1C6.4 16.5 6.6 18.4 7.8 19.6C9 20.8 10.8 21 12 20L11.9 20.9C10.3 22 8.2 21.8 6.9 20.5C5.6 19.2 5.4 17.1 6.5 15.5L12 7.5Z" fill="#3D8994" />
                 </svg>
                 <span>SIGMA WATER</span>
             </div>
             <nav>
                 <a href="#" class="active">Home</a>
-                <a href="products.html">Our Products</a>
-                <a href="#">About us</a>
+                <a href="#products">Our Products</a>
+                <a href="#about">About us</a>
                 <a href="#">Sales</a>
             </nav>
-            <a href="#" class="btn-primary">Pre-order</a>
+            <a href="#products" class="btn-primary">Pre-order</a>
         </header>
 
         <!-- Main Hero Section -->
         <main class="hero">
-            <!-- Left Column Content -->
             <div class="hero-content">
                 <h1>Fresh Cupped And Water Bottles Ready To Make Your Day</h1>
                 <p>Sigma Water is the premier provider of fresh bottled and cupped water for the island of Sulawesi.</p>
-                <a href="products.html" class="link-action">VIEW PRODUCTS</a>
+                <a href="#products" class="link-action">VIEW PRODUCTS</a>
 
                 <div class="size-selector">
                     <h3>Available in</h3>
                     <div class="sizes">
-                        <span class="size-badge">Gallon</span>
-                        <span class="size-badge">Bottle</span>
-                        <span class="size-badge">Cup</span>
+                        <button class="size-badge" onclick="swapImage('sigma_gallon.png', 'Gallon')">Gallon</button>
+                        <button class="size-badge active-badge" onclick="swapImage('main_bottle.png', 'Bottle')">Bottle</button>
+                        <button class="size-badge" onclick="swapImage('sigma_cup.png', 'Cup')">Cup</button>
                     </div>
                 </div>
             </div>
@@ -70,9 +66,8 @@
                     </div>
                 </div>
                 <!-- 3D Bottle Render -->
-                <img src="main_bottle.png" alt="Sigma Water Bottle Teal" class="main-bottle-img">
-
-                <!-- Floating Spheres -->
+                <img src="main_bottle.png" alt="Sigma Water Bottle" class="main-bottle-img" id="heroImage">
+                
                 <div class="sphere sphere-1"></div>
                 <div class="sphere sphere-2"></div>
                 <div class="sphere sphere-3"></div>
@@ -82,13 +77,11 @@
             <div class="hero-cards">
                 <div class="card preorder-card glass">
                     <h2>PRE-ORDER</h2>
-                    <p>We are in the final stages of preparation. You can place your pre-order now. Check out our price
-                        list.</p>
-                    <a href="#" class="link-action sm">PRICE LIST</a>
+                    <p>We are in the final stages of preparation. You can place your pre-order now. Check out our price list.</p>
+                    <a href="#products" class="link-action sm">PRICE LIST</a>
                 </div>
 
                 <div class="card video-card glass">
-                    <!-- Secondary Bottle Render -->
                     <img src="secondary_bottle.png" alt="Sigma Water Bottle Green" class="secondary-bottle-img">
                     <div class="video-overlay">
                         <span>PLAY VIDEO</span>
@@ -101,7 +94,110 @@
                 </div>
             </div>
         </main>
-    </div>
-</body>
 
+        <!-- Products Section (Merged from products.html) -->
+        <section id="products" class="products-page">
+            <h1 class="page-title">Bulk Products</h1>
+            <p class="page-subtitle">Available for delivery across Sulawesi. Minimum order: 1 Box.</p>
+            
+            <div class="product-grid">
+                <!-- Gallon -->
+                <div class="product-card glass">
+                    <img src="sigma_gallon.png" alt="Sigma Gallon" class="product-img gallon-img">
+                    <div class="product-info">
+                        <h2>Sigma Gallon</h2>
+                        <p class="package-info">1 Box contains 4 Gallons</p>
+                        <p class="price">Rp 80.000 / Box</p>
+                        <button class="btn-add-cart" onclick="addToCart('Gallon (Box of 4)', 80000)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Bottle -->
+                <div class="product-card glass">
+                    <img src="main_bottle.png" alt="Sigma Bottle" class="product-img bottle-img">
+                    <div class="product-info">
+                        <h2>Sigma Bottle (600ml)</h2>
+                        <p class="package-info">1 Box contains 18 Bottles</p>
+                        <p class="price">Rp 60.000 / Box</p>
+                        <button class="btn-add-cart" onclick="addToCart('Bottle (Box of 18)', 60000)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Cup -->
+                <div class="product-card glass">
+                    <img src="sigma_cup.png" alt="Sigma Cup" class="product-img cup-img">
+                    <div class="product-info">
+                        <h2>Sigma Cup (220ml)</h2>
+                        <p class="package-info">1 Box contains 36 Cups</p>
+                        <p class="price">Rp 35.000 / Box</p>
+                        <button class="btn-add-cart" onclick="addToCart('Cup (Box of 36)', 35000)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="about-page">
+            <div class="about-container glass">
+                <div class="about-content">
+                    <h2>Our Story</h2>
+                    <p>Founded in <strong>2016</strong> and proudly based in the heart of <strong>Central Sulawesi</strong>, Sigma Water was created with a singular mission: to provide our community with the purest, most refreshing drinking water available.</p>
+                    <p>We combine state-of-the-art filtration technology with a commitment to sustainability, ensuring that every drop you drink—whether from our convenient cups, daily bottles, or household gallons—supports a healthier lifestyle and a healthier planet.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Floating Cart UI -->
+    <div class="floating-cart" id="floatingCart">
+        <div class="cart-header">
+            <h3>Your Order</h3>
+            <span id="cartCount">0 items</span>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Items injected by JS -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">Total: <span id="cartTotal">Rp 0</span></div>
+            <div class="cart-actions">
+                <button type="button" class="btn-checkout" onclick="checkoutWhatsApp()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.888-.788-1.487-1.761-1.66-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                    </svg>
+                    Checkout
+                </button>
+                <button type="button" class="btn-cancel" onclick="cancelOrder()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="cart.js"></script>
+    <script>
+        function swapImage(imgSrc, sizeName) {
+            const heroImage = document.getElementById('heroImage');
+            heroImage.style.opacity = '0';
+            
+            setTimeout(() => {
+                heroImage.src = imgSrc;
+                heroImage.alt = 'Sigma Water ' + sizeName;
+                
+                if (sizeName === 'Gallon') {
+                    heroImage.style.height = '350px';
+                } else if (sizeName === 'Cup') {
+                    heroImage.style.height = '200px';
+                } else {
+                    heroImage.style.height = '480px';
+                }
+                heroImage.style.opacity = '1';
+            }, 300);
+
+            document.querySelectorAll('.size-badge').forEach(btn => {
+                btn.classList.remove('active-badge');
+                if(btn.innerText === sizeName) {
+                    btn.classList.add('active-badge');
+                }
+            });
+        }
+    </script>
+</body>
 </html>

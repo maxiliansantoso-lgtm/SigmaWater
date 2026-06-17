@@ -85,6 +85,10 @@ function checkoutWhatsApp() {
     message += "Please let me know the shipping cost and payment details. Thank you!";
 
     const encoded = encodeURIComponent(message);
-    // Use a placeholder phone number for now
     window.open(`https://wa.me/6281234567890?text=${encoded}`, '_blank');
+}
+
+function cancelOrder() {
+    cart = [];
+    updateCartUI();
 }

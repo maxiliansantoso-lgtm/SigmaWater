@@ -21,13 +21,22 @@
     font-weight: 500;
     backdrop-filter: blur(4px);
     transition: all 0.3s;
-    cursor: default;
+    cursor: pointer;
+    font-family: inherit;
+    color: inherit;
 }
 
 .size-badge:hover {
     background: var(--glass-bg);
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.active-badge {
+    background: var(--glass-bg) !important;
+    border-color: var(--accent) !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    color: var(--accent);
 }
 
 /* Products Page Styles */
@@ -135,7 +144,7 @@
 /* Floating Cart UI */
 .floating-cart {
     position: fixed;
-    bottom: 2rem;
+    bottom: -600px; /* Hide completely offscreen */
     right: 2rem;
     width: 350px;
     background: var(--glass-bg);
@@ -146,14 +155,13 @@
     box-shadow: 0 10px 40px rgba(0,0,0,0.15);
     display: flex;
     flex-direction: column;
-    transform: translateY(150%);
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: bottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     z-index: 1000;
     overflow: hidden;
 }
 
 .floating-cart.visible {
-    transform: translateY(0);
+    bottom: 2rem; /* Bring into view */
 }
 
 .cart-header {
@@ -247,8 +255,13 @@
     margin-bottom: 1rem;
 }
 
+.cart-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
 .btn-checkout {
-    width: 100%;
+    flex: 2;
     background: #25D366; /* WhatsApp Green */
     color: white;
     border: none;
@@ -270,4 +283,53 @@
 
 .btn-checkout:active {
     transform: scale(0.98);
+}
+
+.btn-cancel {
+    flex: 1;
+    background: rgba(255, 0, 0, 0.1);
+    color: #d32f2f;
+    border: none;
+    padding: 1rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-size: 0.9rem;
+}
+
+.btn-cancel:hover {
+    background: rgba(255, 0, 0, 0.2);
+}
+
+/* About Us Section */
+.about-page {
+    padding-top: 4rem;
+    padding-bottom: 8rem;
+    display: flex;
+    justify-content: center;
+}
+
+.about-container {
+    max-width: 800px;
+    padding: 4rem;
+    text-align: center;
+    border-radius: 24px;
+}
+
+.about-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary-text);
+}
+
+.about-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--secondary-text);
+    margin-bottom: 1.5rem;
+}
+
+.about-content p:last-child {
+    margin-bottom: 0;
 }
